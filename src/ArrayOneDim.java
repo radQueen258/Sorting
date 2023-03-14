@@ -29,8 +29,9 @@ public class ArrayOneDim {
 
     public void writeArray() {
         Scanner radka = new Scanner (System.in);
-        System.out.println("Write the elements of the array: ");
+        System.out.println("Array length: ");
         int n = radka.nextInt();
+        System.out.println("Write the elements of the array: ");
         this.array = new int [n];
         for (int i = 0; i < this.array.length; i ++) {
             this.array[i] = radka.nextInt();
@@ -113,7 +114,49 @@ public class ArrayOneDim {
         System.out.println(Arrays.toString(this.array));
     }
 
-    
+//    public void myVariant14 () {
+//        for (int i = 0; i < this.array.length; i ++) {
+//            int j, last;
+//
+//            last = this.array[this.array.length - 1];
+//
+//            for (j = this.array.length - 1; j > 0; j--) {
+//                this.array[j] = this.array[j - 1];
+//            }
+//            this.array[0] = 0;
+//            this.array[0] = last;
+//        }
+//        System.out.println(Arrays.toString(this.array));
+//    }
+
+//    public void myVariant14() {
+//        int n = this.array.length;
+//
+//        for (int gap = n / 2; gap > 0; gap /= 2) {
+//            for (int i = gap; i < n; i += 1) {
+//                int temp = this.array[i];
+//                int j;
+//                for (j = i; j >= gap && this.array[j - gap] > temp; j -= gap) {
+//                   this.array[j] = this.array[j - gap];
+//                }
+//                this.array[j] = temp;
+//            }
+//        }
+//        System.out.println(Arrays.toString(this.array));
+//    }
+
+    public void myVariant14() {
+        int gap = this.array.length;
+
+            int temp = this.array[0];
+            for (int i = 0; i < gap - 1; i ++) {
+                this.array[i] = this.array[i + 1];
+            }
+            temp = 0;
+            this.array[gap - 1] = temp;
+
+        System.out.println(Arrays.toString(this.array));
+    }
 
 
 }
