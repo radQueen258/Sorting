@@ -5,13 +5,16 @@ public class ArrayOneDim {
 
     public ArrayOneDim(){}
     public ArrayOneDim(int n){
+
         this.array = new int[n];
     }
     public ArrayOneDim(int[] array) {
+
         this.array = Arrays.copyOf(array, array.length);
     }
 
     public int[] getArray() {
+
         return array;
     }
 
@@ -19,9 +22,11 @@ public class ArrayOneDim {
         this.array = array;
     }
     public int getElement(int i) {
+
         return this.array[i];
     }
     public void setElement (int i, int x) {
+
         this.array[i] = x;
     }
 
@@ -44,7 +49,7 @@ public class ArrayOneDim {
 
     public String toString() {
 
-        return "The array" + Arrays.toString(array);
+        return "The array " + Arrays.toString(array);
     }
 
     public int sumArray() {
