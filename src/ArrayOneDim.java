@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class ArrayOneDim {
     public int[] array;
@@ -45,17 +43,14 @@ public class ArrayOneDim {
     }
 
     public String toString() {
+
         return "The array" + Arrays.toString(array);
     }
 
-//    public void oneElemIndex () {
-//        System.out.println("Element: " + array[4] +) " of index: " + ;
-//    }
-
     public int sumArray() {
         int sum = 0;
-        for (int i = 0; i < this.array.length; i ++) {
-            sum += this.array[i];
+        for (int j : this.array) {
+            sum += j;
         }
         return sum;
     }
@@ -93,6 +88,25 @@ public class ArrayOneDim {
         return res;
     }
 
+    public ArrayOneDim getPositive() {
+        int counter = 0;
+
+        for (int i = 0; i < this.array.length; i ++) {
+            if (this.array[i] > 0) counter ++;
+        }
+        ArrayOneDim res = new ArrayOneDim(counter);
+
+        for (int i = 0; i < this.array.length; i ++) {
+            for (int k = 0; k < counter; k ++) {
+                if (this.array[i] > 0) {
+                    res.array[k] = this.array[k];
+                    i ++;
+                }
+            }
+        }
+        return res;
+    }
+
     public int indexOf(int key){
         for (int i =0; i< this.array.length;i++){
             if (this.array[i]==key)
@@ -113,6 +127,59 @@ public class ArrayOneDim {
         }
         System.out.println(Arrays.toString(this.array));
     }
+
+    public void elemByIndex () {
+        Scanner radka = new Scanner (System.in);
+        System.out.println("Index number: ");
+        int i = radka.nextInt();
+        System.out.println("Array element: " + this.array[i]);
+    }
+
+    public void changeIndex () {
+        List <Integer> arr = new ArrayList<>();
+        for (int num: this.array) {
+            arr.add(num);
+        }
+        arr.set(5,100);
+        System.out.println("Position 5 changed to 100: " + arr);
+
+    }
+
+    public void linearSearch() {
+        Scanner radka = new Scanner (System.in);
+        System.out.print("Which element do you want ?");
+        int x = radka.nextInt();
+        for (int i = 0; i < this.array.length; i ++) {
+            if (this.array[i] == x) {
+                System.out.println(x + " It was found at index: " + i);
+            }
+        }
+        System.out.println(x + " Element not found");
+    }
+
+    public void binarySearch() {
+        int lo = 0, hi = this.array.length - 1;
+        Scanner radka = new Scanner (System.in);
+        System.out.print("Which element do you want ?");
+        int x = radka.nextInt();
+
+        while (hi - lo > 1) {
+            int mid = (hi + lo) / 2;
+            if (this.array[mid] < x) {
+                lo = mid + 1;
+            } else {
+                hi = mid;
+            }
+        }
+        if (this.array[lo] == x) {
+            System.out.println(x + " Found at position: " + lo);
+        } else if (this.array[hi] == x) {
+            System.out.println(x + " Found at position: " + hi);
+        } else {
+            System.out.println(x + " Not Found");
+        }
+    }
+
 
 //    public void myVariant14 () {
 //        for (int i = 0; i < this.array.length; i ++) {
