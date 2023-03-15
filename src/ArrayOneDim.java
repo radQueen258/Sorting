@@ -93,25 +93,6 @@ public class ArrayOneDim {
         return res;
     }
 
-//    public ArrayOneDim getPositive() {
-//        int counter = 0;
-//
-//        for (int j : this.array) {
-//            if (j > 0) counter++;
-//        }
-//        ArrayOneDim res = new ArrayOneDim(counter);
-//
-//        for (int i = 0; i < this.array.length; i ++) {
-//            for (int k = 0; k < counter; k ++) {
-//                if (this.array[i] > 0) {
-//                    res.array[k] = this.array[k];
-//                    i ++;
-//                }
-//            }
-//        }
-//        return res;
-//    }
-
     public int indexOf(int key){
         for (int i =0; i< this.array.length;i++){
             if (this.array[i]==key)
