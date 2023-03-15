@@ -79,8 +79,8 @@ public class ArrayOneDim {
     public ArrayOneDim getPositiveElem () {
         int counter = 0;
 
-        for (int i = 0; i < this.array.length; i ++) {
-            if (this.array[i] > 0) counter ++;
+        for (int j : this.array) {
+            if (j > 0) counter++;
         }
         ArrayOneDim res = new ArrayOneDim(counter);
 
@@ -93,24 +93,24 @@ public class ArrayOneDim {
         return res;
     }
 
-    public ArrayOneDim getPositive() {
-        int counter = 0;
-
-        for (int i = 0; i < this.array.length; i ++) {
-            if (this.array[i] > 0) counter ++;
-        }
-        ArrayOneDim res = new ArrayOneDim(counter);
-
-        for (int i = 0; i < this.array.length; i ++) {
-            for (int k = 0; k < counter; k ++) {
-                if (this.array[i] > 0) {
-                    res.array[k] = this.array[k];
-                    i ++;
-                }
-            }
-        }
-        return res;
-    }
+//    public ArrayOneDim getPositive() {
+//        int counter = 0;
+//
+//        for (int j : this.array) {
+//            if (j > 0) counter++;
+//        }
+//        ArrayOneDim res = new ArrayOneDim(counter);
+//
+//        for (int i = 0; i < this.array.length; i ++) {
+//            for (int k = 0; k < counter; k ++) {
+//                if (this.array[i] > 0) {
+//                    res.array[k] = this.array[k];
+//                    i ++;
+//                }
+//            }
+//        }
+//        return res;
+//    }
 
     public int indexOf(int key){
         for (int i =0; i< this.array.length;i++){
@@ -150,22 +150,20 @@ public class ArrayOneDim {
 
     }
 
-    public void linearSearch() {
-        Scanner radka = new Scanner (System.in);
-        System.out.print("Which element do you want ?");
-        int x = radka.nextInt();
+    public int linearSearch(int x) {
+
         for (int i = 0; i < this.array.length; i ++) {
             if (this.array[i] == x) {
-                System.out.println(x + " It was found at index: " + i);
+                return i;
             }
         }
-        System.out.println(x + " Element not found");
+        return -1;
     }
 
     public void binarySearch() {
         int lo = 0, hi = this.array.length - 1;
         Scanner radka = new Scanner (System.in);
-        System.out.print("Which element do you want ?");
+        System.out.print("Which element do you want ? ");
         int x = radka.nextInt();
 
         while (hi - lo > 1) {
@@ -184,38 +182,6 @@ public class ArrayOneDim {
             System.out.println(x + " Not Found");
         }
     }
-
-
-//    public void myVariant14 () {
-//        for (int i = 0; i < this.array.length; i ++) {
-//            int j, last;
-//
-//            last = this.array[this.array.length - 1];
-//
-//            for (j = this.array.length - 1; j > 0; j--) {
-//                this.array[j] = this.array[j - 1];
-//            }
-//            this.array[0] = 0;
-//            this.array[0] = last;
-//        }
-//        System.out.println(Arrays.toString(this.array));
-//    }
-
-//    public void myVariant14() {
-//        int n = this.array.length;
-//
-//        for (int gap = n / 2; gap > 0; gap /= 2) {
-//            for (int i = gap; i < n; i += 1) {
-//                int temp = this.array[i];
-//                int j;
-//                for (j = i; j >= gap && this.array[j - gap] > temp; j -= gap) {
-//                   this.array[j] = this.array[j - gap];
-//                }
-//                this.array[j] = temp;
-//            }
-//        }
-//        System.out.println(Arrays.toString(this.array));
-//    }
 
     public void myVariant14() {
         int gap = this.array.length;
